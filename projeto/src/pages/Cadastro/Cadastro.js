@@ -1,5 +1,5 @@
 import React from 'react'
-import './Cadastro.css';
+import './cadastro.css';
 import Api from '../../api/api';
 
 const Cadastro = (props) => {
@@ -12,18 +12,16 @@ const Cadastro = (props) => {
     const prioridade = evento.target.prioridade.value;
     const descricao = evento.target.descricao.value;
     const status = evento.target.status.value;
-    const prazo = evento.target.prazo.value;
     
     const tarefa = {
       titulo,
       descricao,
       prioridade,
-      status,
-      prazo
+      status
     }
     
     try {
-      const response = await Api.fetchPost(Tarefa)
+      const response = await Api.fetchPost(tarefa)
       const result = await response.json();
       alert(result.message);
       history.push('/'); // forca o historico a voltar para a rota de / => home

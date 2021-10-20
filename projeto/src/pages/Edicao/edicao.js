@@ -4,44 +4,41 @@ import Api from "../../api/api";
 const Edicao = (props) => {
   const _id = props.match.params.id;
   const history = props.history;
-  // criacao do estado
+ 
   const [tarefa, setTarefa] = useState({});
 
-  // o use effect chama a funcao getById que retorna o objeto do backend de acordo com o id
+  
   useEffect(() => {
     getTarefaById();
   }, []);
 
   const getTarefaById = async () => {
-    // faz uma chamada para api para pegar o objeto de acordo com o id.
+    
     const response = await Api.fetchGetById(_id);
     const result = await response.json();
-    // atualizo o meu estado de acordo com o resultado.
+    
     setTarefa(result);
   };
 
   const handleFieldsChange = (event) => {
-    // clono meu objeto do estado
+   
     const campos = { ...tarefa };
-    // para cada input eu atualizo o seu respectivo valor no obj
-    campos[event.target.name] = event.target.value;
+   
+    campos[event.target.titulo] = event.target.value;
 
-    // atualizo o meu estado com esse novo objeto.
     setTarefa(campos);
   };
 
   const handleSubmit = async (evento) => {
     evento.preventDefault();
-    faco uma copia do estado com obj atualizado.
-    // const vagaObj = { ...vaga };
-    transforma o salario em inteiro.
-    // tarefaObj.salario = parseInt(vagaObj.salario);
-    // try {
-      const response = await Api.fetchPut(filmeObj, _id);
+    const tarefaObj = {...tarefa};
+    try{
+      const response = await Api.fetchPut(tarefaObj, _id);
       const result = await response.json();
       alert(result.message);
       history.push("/"); // forca o historico a voltar para a rota de / => home
-    } catch (error) {
+    }
+    catch(error){
       console.log(error);
     }
   };
@@ -80,11 +77,11 @@ const Edicao = (props) => {
                     value={tarefa.Descricao}
                     className="form-control"
                     name="descricao"
-                    id="floatingsalario"
+                    id="floatingdescricao"
                     placeholder="Digite a Descricao"
                     onChange={handleFieldsChange}
                   />
-                  <label htmlFor="floatingsalario">Descricao</label>
+                  <label htmlFor="floatingdescricao">Descricao</label>
                 </div>
               </div>
             </div>
@@ -107,7 +104,7 @@ const Edicao = (props) => {
                 <div className="form-floating">
                   <select value={tarefa.prioridade}
                     className="form-control"
-                    name="senioridade"
+                    name="prioridade"
                     id="floatingsenioridade"
                     value={tarefa.prioridade}
                     onChange={handleFieldsChange}

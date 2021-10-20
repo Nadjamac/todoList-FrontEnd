@@ -1,9 +1,9 @@
 
 const Api = {
-    apiUrl: 'http://localhost:3001/tarefas',
+    apiUrl: 'http://localhost:3500/tarefas',
     fetchGetAll: () => fetch(Api.apiUrl),
     fetchGetById: id => fetch(`${Api.apiUrl}/${id}`),
-    fetchPost: (tarefa) => {
+    fetchPost: (tarefas) => {
       return fetch(Api.apiUrl, {
         method: 'POST',
         headers: new Headers({

@@ -1,6 +1,6 @@
 import './App.css';
-import { Switch, Route } from 'react-router-dom';
-import Header from './components/shared/Home/Header';
+import {Switch,Router } from 'react-router-dom';
+import Header from './components/Header/Header';
 import Footer from './components/shared/Footer/Footer';
 import Home from './pages/Home/Home';
 import Cadastro from './pages/Cadastro/Cadastro';
